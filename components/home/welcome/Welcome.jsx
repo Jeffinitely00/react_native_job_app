@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  FlatList,
+  FlatList
 } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -24,13 +24,14 @@ const Welcome = () => {
         <Text style={styles.userName}>Hello Jeff</Text>
         <Text style={styles.welcomeMessage}>Find your perfect job</Text>
       </View>
+
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
             value=""
-            onChange={() => {}}
-            placeholder="What are you looking for?"
+            onChangeText={() => {}}
+            placeholder='What are you looking for?'
           />
         </View>
 
@@ -42,6 +43,7 @@ const Welcome = () => {
           />
         </TouchableOpacity>
       </View>
+
       <View style={styles.tabsContainer}>
         <FlatList
           data={jobTypes}
@@ -50,13 +52,13 @@ const Welcome = () => {
               style={styles.tab(activeJobType, item)}
               onPress={() => {
                 setActiveJobType(item);
-                router.push('/search/${item}')
+                router.push(`/search/${item}`);
               }}
             >
               <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )}
-          keyExtractor={item => item}
+          keyExtractor={(item) => item}
           contentContainerStyle={{ columnGap: SIZES.small}}
           horizontal
         />
